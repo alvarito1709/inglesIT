@@ -88,4 +88,19 @@
 button:hover{
     transform: scale(1.1);
     transition:  0.8s ease-in-out;
+    cursor: pointer;
+}
+
+.success{
+    font-weight: 600;
+    font-style: italic;
+    font-size: .8rem;
+}
+
+.greenLetters{
+    color: #88bf48;
+}
+
+.blueLetters{
+    color: #00b3e3;
 }

@@ -18,7 +18,6 @@ body{
     justify-content: center;
     flex-wrap: wrap;
     width: 30%;
-    box-shadow: -100px -10px 10px 30px rgba(217, 217, 217, 0.73) ;
 }
 
 #bannerContainer img{
