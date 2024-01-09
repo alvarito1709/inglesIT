@@ -1,22 +1,32 @@
 package com.agencia.inglesIT.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class User {
+@Data
+public class User implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String nombre;
     private String apellido;
     private String documento;
+    @NotNull
     private String email;
+    @NotNull
+    private String password;
     private String telefono;
-    private String permisos;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Rol> roles;
+
 
 }

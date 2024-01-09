@@ -93,10 +93,14 @@
     <div class="cardContainer">
         <div class="levelContainer">
             <span class="blackLine"></span>
-            <p>FELICITACIONES, TU NIVEL ALCANZADO ES:<span class="purpleLetters" onclick="prueba()"> NIVEL 2</span> </p>
+            <p>FELICITACIONES, TU NIVEL ALCANZADO ES:<span class="purpleLetters"> NIVEL 2</span> </p>
         </div>
     </div>
 </div>
+
+<form method="POST" th:action="@{/logout}">
+    <button type="submit"> LOGOUT </button>
+</form>
 
 
 
