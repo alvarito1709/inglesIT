@@ -12,7 +12,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 @Service("userDetailsService")
@@ -26,10 +29,11 @@ public class UserService implements UserDetailsService {
     if(user == null){
         throw new UsernameNotFoundException(username);
     }
-    var roles = new ArrayList<GrantedAuthority>();
-    for(Rol rol : user.getRoles()){
-        roles.add(new SimpleGrantedAuthority(rol.getNombre()));
-    }
-    return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(), roles);
+        var role = new ArrayList<GrantedAuthority>();
+        role.add(new SimpleGrantedAuthority(user.getRol()));
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(true);
+        session.setAttribute("usuariosession", user);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), role);
     }
 }
