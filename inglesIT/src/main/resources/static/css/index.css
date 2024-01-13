@@ -94,3 +94,34 @@ input[type=number]::-webkit-outer-spin-button {
     width: 210px;
     transition: 0.5s;
 }
+
+@media screen and (max-width: 768px) {
+
+    #titleContainer{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 30%;
+    }
+
+    .blackLine{
+        background-color: black;
+        width: 8px;
+        height: 70px;
+        margin-right: 5px;
+    }
+
+    #titleContainer h1{
+        font-size: .7rem;
+        justify-self: center;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+
+}
