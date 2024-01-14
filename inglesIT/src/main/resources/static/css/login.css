@@ -1,9 +1,15 @@
+*{
+    font-family:  sans-serif;
+}
+
 
 .bodyContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(130deg, rgba(2,0,36,1) 2%, rgba(52,72,94,1) 95%, rgba(3,125,191,1) 100%);
 }
 
 .loginContainer{
@@ -15,9 +21,8 @@
     padding: 30px;
     width: 300px;
     height: 400px;
-    background-color: rgba(136, 191, 72, 0.77);
     border-radius: 10px;
-    color: black;
+    color: whitesmoke;
 }
 
 form{
@@ -31,6 +36,18 @@ form{
 
 }
 
+#iconContainer{
+    background-color: #455b7a;
+    border-radius: 100%;
+    margin: auto;
+}
+
+#userIcon{
+    width: 100px;
+    height: 100px;
+    fill: whitesmoke;
+}
+
 input{
     text-align: center;
     padding: 1px;
@@ -42,4 +59,5 @@ input{
 
 input[type=submit]{
     font-weight: 600;
+    width: 204px;
 }

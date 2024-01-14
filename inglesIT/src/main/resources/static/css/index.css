@@ -40,6 +40,7 @@ body{
     margin: 100px auto;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
 }
 
 #infoSection{
@@ -73,7 +74,7 @@ body{
 #authSection button{
     width: 200px;
     padding: 8px;
-    margin: auto;
+    margin: 10px auto;
     background-color: black;
     color: whitesmoke;
     border: none;
@@ -123,5 +124,49 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media screen and (max-width: 480px) {
 
+    *{
+        font-size: .8rem;
+    }
+
+    #titleContainer{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 30%;
+    }
+
+    .blackLine{
+        background-color: black;
+        width: 7px;
+        height: 50px;
+        margin-right: 5px;
+    }
+
+    #titleContainer h1{
+
+        justify-self: center;
+        align-self: center;
+    }
+
+    #authSection button{
+        width: 100px;
+        padding: 6px;
+        margin: 5px auto;
+        background-color: black;
+        color: whitesmoke;
+        border: none;
+        border-radius: 5px;
+    }
+
+    #authSection button:hover{
+        width: 105px;
+        transition: 0.5s;
+    }
+
+    #logSection{
+        justify-content: space-around;
+    }
 
 }
