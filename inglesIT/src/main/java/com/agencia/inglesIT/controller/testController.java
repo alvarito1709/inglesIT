@@ -12,4 +12,9 @@ public class testController {
     String level1(){
         return "test1";
     }
+
+    @GetMapping("/init")
+    public void counterInit(){
+
+    }
 }

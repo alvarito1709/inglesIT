@@ -15,12 +15,18 @@
 
 <div class="container">
 
+    <div id="timerContainer">
+        <div id="timer">
+            <h1 id="counterDisplay"><span id="minute"></span>:<span id="second"></span></h1>
+        </div>
+    </div>
+
 </div>
 
 <th:block th:replace="plantilla :: footer-mobile"></th:block>
 <th:block th:replace="plantilla :: footer-web"></th:block>
 
-
+    <script th:src="@{/javascript/timer.js}"></script>
 
 </body>
 </html>

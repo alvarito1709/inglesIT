@@ -1,3 +1,13 @@
 .container{
     height: 100vh;
 }
+
+#timerContainer{
+    background-color: #a6a4a4;
+    float: right;
+    padding: 20px;
+    width: fit-content;
+    position: fixed;
+    margin: 10px 0 0 10px;
+    border-radius: 10px;
+}
