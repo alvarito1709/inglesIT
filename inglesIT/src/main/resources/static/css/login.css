@@ -8,8 +8,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgb(2,0,36);
-    background: linear-gradient(130deg, rgba(2,0,36,1) 2%, rgba(52,72,94,1) 95%, rgba(3,125,191,1) 100%);
+    background-color: #e5e5e5;
 }
 
 .loginContainer{
@@ -22,7 +21,7 @@
     width: 300px;
     height: 400px;
     border-radius: 10px;
-    color: whitesmoke;
+    color: black;
 }
 
 form{
@@ -37,7 +36,7 @@ form{
 }
 
 #iconContainer{
-    background-color: #455b7a;
+    background-color: #c5c3c2;
     border-radius: 100%;
     margin: auto;
 }

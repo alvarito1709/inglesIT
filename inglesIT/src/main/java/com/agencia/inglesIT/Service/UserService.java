@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserDao userDao;
+
+    private Model model;
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -31,11 +34,18 @@ public class UserService implements UserDetailsService {
     if(user == null){
         throw new UsernameNotFoundException(username);
     }
+
         var roles = new ArrayList<GrantedAuthority>();
         roles.add(new SimpleGrantedAuthority(user.getRol()));
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(true);
         session.setAttribute("usuariosession", user);
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), roles);
+    }
+
+
+    public User loadUser(String username){
+        User user = userDao.findByUsername(username);
+        return user;
     }
 }
