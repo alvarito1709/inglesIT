@@ -1,5 +1,7 @@
 .container{
     height: 100vh;
+    display: flex;
+    flex-direction: row;
 }
 
 #timerContainer{
@@ -9,5 +11,17 @@
     width: fit-content;
     position: fixed;
     margin: 10px 0 0 10px;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+#testContainer{
+    margin: auto;
+}
+
+#test{
+    background-color: #a6a4a4 ;
+    width: 400px;
+    height: 400px;
     border-radius: 10px;
 }

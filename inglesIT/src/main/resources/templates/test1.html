@@ -8,6 +8,11 @@
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}" >
     <link rel="stylesheet" th:href="@{/css/test.css}" >
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
 
@@ -15,9 +20,15 @@
 
 <div class="container">
 
-    <div id="timerContainer">
+    <div id="timerContainer" th:fragment="timer">
         <div id="timer">
             <h1 id="counterDisplay"><span id="minute"></span>:<span id="second"></span></h1>
+        </div>
+    </div>
+
+    <div id="testContainer">
+        <div id="test" data-aos="fade-left" data-aos-duration="1500">
+
         </div>
     </div>
 
@@ -27,6 +38,10 @@
 <th:block th:replace="plantilla :: footer-web"></th:block>
 
     <script th:src="@{/javascript/timer.js}"></script>
+
+<script>
+    AOS.init();
+</script>
 
 </body>
 </html>
