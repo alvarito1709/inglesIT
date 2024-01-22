@@ -1,26 +1,104 @@
+var urlBase = "http://localhost:8080"
+
+var container = document.getElementById("container");
+var body = document.getElementById("boardBody");
+
+function showPersonalData(){
+
+    var url = urlBase+'/test/level'
+    const test = document.getElementById("prueba").value;
 
 
-function prueba1(){
-    document.getElementById("success1").style.display = "block";
-    document.getElementById("formularyButton1").style.display = "none";
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data:{
+            prueba: test
+        },
+        success: [function (data){
+            $("#tester").html(data);
+        },
+        function (){
+            container.style.display = "flex";
+            body.style.display = "none";
+        }],
+        error: [function () {
+
+        }]
+    })
+
 }
 
-function prueba2(){
-    document.getElementById("success2").style.display = "block";
-    document.getElementById("formularyButton2").style.display = "none";
+function showLevel1(){
+    var url = urlBase+'/test/level'
+    const test = document.getElementById("level1").value;
+
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data:{
+            prueba: test
+        },
+        success: [function (data){
+            $("#tester").html(data);
+        },
+            function (){
+                container.style.display = "flex";
+                body.style.display = "none";
+            }],
+        error: [function () {
+
+        }]
+    })
 }
 
-function prueba3(){
-    document.getElementById("success3").style.display = "block";
-    document.getElementById("formularyButton3").style.display = "none";
+function showLevel2(){
+    var url = urlBase+'/test/level'
+    const test = document.getElementById("level2").value;
+
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data:{
+            prueba: test
+        },
+        success: [function (data){
+            $("#tester").html(data);
+        },
+            function (){
+                container.style.display = "flex";
+                body.style.display = "none";
+            }],
+        error: [function () {
+
+        }]
+    })
 }
 
-function prueba4(){
-    document.getElementById("success4").style.display = "block";
-    document.getElementById("formularyButton4").style.display = "none";
+function showLevel3(){
+    var url = urlBase+'/test/level'
+    const test = document.getElementById("level4").value;
+
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data:{
+            prueba: test
+        },
+        success: [function (data){
+            $("#tester").html(data);
+        },
+            function (){
+                container.style.display = "flex";
+                body.style.display = "none";
+            }],
+        error: [function () {
+
+        }]
+    })
 }
 
-function prueba5(){
+function showLevel4(){
     document.getElementById("success5").style.display = "block";
     document.getElementById("formularyButton5").style.display = "none";
 }
