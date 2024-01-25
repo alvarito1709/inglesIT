@@ -50,6 +50,8 @@ function showLevel1(){
 
         }]
     })
+
+
 }
 
 function showLevel2(){
@@ -77,7 +79,7 @@ function showLevel2(){
 
 function showLevel3(){
     var url = urlBase+'/test/level'
-    const test = document.getElementById("level4").value;
+    const test = document.getElementById("level3").value;
 
     $.ajax({
         type: 'POST',
@@ -103,10 +105,14 @@ function showLevel4(){
     document.getElementById("formularyButton5").style.display = "none";
 }
 
-var formulary = document.getElementById("success1");
-var level1 = document.getElementById("success2");
-var level2 = document.getElementById("success3");
 
-if (formulary.style.display === "block"){
-    document.getElementById("finishContainer").style.display = "block";
+    window.onbeforeunload = function (){
+        if( body.style.display === 'none'){
+            return confirm("¿Seguro que quieres recargar la página? Se contará como un intento y los datos no serán guardados.",
+                {confirmButtom:"Aceptar", cancelButtom: "Cancelar"}
+            );
+        }
+
 }
+
+

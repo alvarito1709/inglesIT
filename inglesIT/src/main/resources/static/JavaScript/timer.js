@@ -4,7 +4,10 @@ var second = 60;
 var mSecond = 1000;
 
 
-var interval = setInterval(timer, mSecond);
+function initializateTimer(){
+     setInterval(timer, mSecond);
+}
+
 
 
 function timer(){

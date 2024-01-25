@@ -28,11 +28,117 @@
 
     <div id="testContainer">
         <div id="test" data-aos="fade-left" data-aos-duration="2000" th:fragment="test (${prueba})">
-           <h1 id="personalData" th:if="${prueba == 'personalData'}">PERSONAL DATA</h1>
-            <h1 id="level1" th:if="${prueba == 'level1'}">LEVEL1</h1>
-            <h1 id="level2" th:if="${prueba == 'level2'}">LEVEL2</h1>
-            <h1 id="level3" th:if="${prueba == 'level3'}">LEVEL3</h1>
-            <h1 id="level4" th:if="${prueba == 'level4'}">LEVEL4</h1>
+           <h2 id="personalData" th:if="${prueba == 'personalData'}">PERSONAL DATA</h2>
+            <div id="level1" th:if="${prueba == 'level1'}">
+
+                <div class="questionContainer">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/s8az2Rzook0?si=6xS1xzidCwtRYvOT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+                        </iframe>
+                        <p class="question">1- Who walks to work?</p>
+
+
+                    <input th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion">
+
+                </div>
+                    <div class="answerContainer">
+                        <span id="answer1" draggable="true" class="drag answer">a.Lena</span>
+                        <span id="answer2" draggable="true" class="drag answer">b.Paul</span>
+                        <span id="answer3" draggable="true" class="drag answer">c.Holly</span>
+                    </div>
+
+                <hr>
+
+                <div class="questionContainer">
+                    <p class="question">2- Who rides a scooter to work?</p>
+
+                    <input th:dropzone="prueba1" id="dropQuestion2" class="dropQuestion">
+
+                </div>
+
+                    <div class="answerContainer">
+                        <span id="answer4" draggable="true" class="drag answer">a.Lena</span>
+                        <span id="answer5" draggable="true" class="drag answer">b.Paul</span>
+                        <span id="answer6" draggable="true" class="drag answer">c.Holly</span>
+                    </div>
+
+                <hr>
+
+                <div class="questionContainer">
+                    <p class="question">3- Who takes a bus or coach to buy food and visit friends?</p>
+
+                    <input th:dropzone="prueba1" id="dropQuestion3" class="dropQuestion">
+
+                </div>
+                    <div class="answerContainer">
+                        <span id="answer7" draggable="true" class="drag answer">a.Lena</span>
+                        <span id="answer8" draggable="true" class="drag answer">b.Paul</span>
+                        <span id="answer9" draggable="true" class="drag answer">c.Holly</span>
+                    </div>
+
+                <hr>
+
+                <div class="questionContainer">
+                    <p class="question">4- Who cycles to college?</p>
+
+                    <input th:dropzone="prueba1" id="dropQuestion4" class="dropQuestion">
+
+                </div>
+                <div class="answerContainer">
+                    <span id="answer10" draggable="true" class="drag answer">a.Lena</span>
+                    <span id="answer11" draggable="true" class="drag answer">b.Paul</span>
+                    <span id="answer12" draggable="true" class="drag answer">c.Holly</span>
+                </div>
+
+                <hr>
+
+                <div class="questionContainer">
+                    <p class="question">5- Who uses the subway to buy food?</p>
+
+                    <input th:dropzone="prueba1" id="dropQuestion5" class="dropQuestion">
+
+                </div>
+                <div class="answerContainer">
+                    <span id="answer13" draggable="true" class="drag answer">a.Lena</span>
+                    <span id="answer14" draggable="true" class="drag answer">b.Paul</span>
+                    <span id="answer15" draggable="true" class="drag answer">c.Holly</span>
+                </div>
+
+                <hr>
+
+                <div class="questionContainer">
+                    <p class="question">6- Who hires a car to visit other cities?</p>
+
+                    <input th:dropzone="prueba1" id="dropQuestion6" class="dropQuestion">
+
+                </div>
+                <div class="answerContainer">
+                    <span id="answer16" draggable="true" class="drag answer">a.Lena</span>
+                    <span id="answer17" draggable="true" class="drag answer">b.Paul</span>
+                    <span id="answer18" draggable="true" class="drag answer">c.Holly</span>
+                </div>
+
+                <hr>
+
+                <div class="questionContainer">
+                    <p class="question">7- Who takes the train when he goes out at night?</p>
+
+                    <input th:dropzone="prueba1" id="dropQuestion7" class="dropQuestion">
+
+                </div>
+                <div class="answerContainer">
+                    <span id="answer19" draggable="true" class="drag answer">a.Lena</span>
+                    <span id="answer20" draggable="true" class="drag answer">b.Paul</span>
+                    <span id="answer21" draggable="true" class="drag answer">c.Holly</span>
+                </div>
+
+                <hr>
+
+               <div class="buttonContainer"> <button class="submitButton">ENVIAR</button> </div>
+            </div>
+            <h2 id="level2" th:if="${prueba == 'level2'}">LEVEL2</h2>
+            <h2 id="level3" th:if="${prueba == 'level3'}">LEVEL3</h2>
+            <h2 id="level4" th:if="${prueba == 'level4'}">LEVEL4</h2>
         </div>
     </div>
 
