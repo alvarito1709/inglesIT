@@ -23,6 +23,7 @@
     background-color: #a6a4a4 ;
     padding: 20px;
     width: fit-content;
+    max-width: 800px;
     min-width: 400px;
     height: fit-content;
     min-height: 400px;
@@ -94,5 +95,18 @@
 .buttonContainer{
     display: flex;
     justify-content: center;
+}
+
+#englishUse1{
+    flex-direction: column;
+}
+
+.questionContainer fieldset{
+    align-self: center;
+    width: 30%;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 

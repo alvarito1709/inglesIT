@@ -36,6 +36,6 @@ function timer(){
     }
 
 
-    return console.log(minute + ":" + second);
+  //  return console.log(minute + ":" + second);
 
 }
