@@ -33,7 +33,8 @@
 }
 
 #test h2{
-    margin: 0 auto;
+    margin: 30px auto;
+    align-self: center;
 }
 
 .drag{
@@ -97,16 +98,49 @@
     justify-content: center;
 }
 
-#englishUse1{
+.englishUseContainer{
+    display: flex;
     flex-direction: column;
 }
 
-.questionContainer fieldset{
+.readingImage{
+    width: 500px;
+    align-self: center;
+}
+
+.marginBottom40{
+    margin-bottom: 40px;
+}
+
+.answerTOF{
     align-self: center;
     width: 30%;
     border: none;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.textContainer{
+    width: 600px;
+    text-align: justify;
+}
+
+.marginAuto{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.answerMC{
+    display: flex;
+    flex-direction: row;
+    border: none;
+    align-self: center;
+}
+
+.labelContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
 }
 
