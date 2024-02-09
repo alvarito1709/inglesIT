@@ -29,6 +29,8 @@ function showPersonalData(){
         }]
     })
 
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
 }
 
 function showLevel1(){
@@ -56,6 +58,7 @@ function showLevel1(){
         }]
     })
 
+    window.scrollTo({top: 0, behavior: 'smooth'});
 
 }
 
@@ -82,6 +85,8 @@ function showLevel2(){
 
         }]
     })
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function showLevel3(){
@@ -107,6 +112,8 @@ function showLevel3(){
 
         }]
     })
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function showLevel4(){

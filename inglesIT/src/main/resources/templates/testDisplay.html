@@ -253,7 +253,130 @@
 
 
             </div>
-            <h2 id="level3" th:if="${prueba == 'level3'}">LEVEL3</h2>
+            <div id="level3" th:if="${prueba == 'level3'}">
+
+                <!-- LISTENING NIVEL 3 -->
+                <div id="listening3" th:if="${apartado.nombreApartado == 'LISTENING'}">
+
+                    <iframe width="560" height="315" th:src="${apartado.video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+                    </iframe>
+
+                        <div class="questionContainer" th:each="pregunta : ${preguntas}" th:if="${pregunta.tipo == 'MC'}">
+
+                            <p class="question" th:text="${pregunta.enunciado}">ENUNCIADO</p>
+
+                            <fieldset class="answerMC">
+                                <div class="labelContainer">
+                                    <label for="RC2q2a1">a.Kevin
+                                        <input type="radio" value="Kevin" name="question1" id="RC2q2a1">
+                                    </label>
+
+                                    <label for="RC2q2a2">b.Samantha
+                                        <input type="radio" value="Samantha" name="question1" id="RC2q2a2">
+                                    </label>
+                                </div>
+
+                                <div class="labelContainer">
+                                    <label for="RC2q2a3">c.Both Kevin and Samantha
+                                        <input type="radio" value="Both Kevin and Samantha" name="question1" id="RC2q2a3">
+                                    </label>
+
+                                    <label for="RC2q2a4">d.Neither Kevin nor Samantha
+                                        <input type="radio" value="Neither Kevin nor Samantha" name="question1" id="RC2q2a4">
+                                    </label>
+                                </div>
+
+                            </fieldset>
+
+                            <hr>
+
+                        </div>
+
+
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitListening3()">ENVIAR</button> </div>
+
+                </div>
+
+
+                <!-- READING COMPREHENSION NIVEL3 -->
+
+                <div id="englishUse3" class="englishUseContainer" th:if="${apartado.nombreApartado == 'READING'}">
+
+                    <h2 class="marginBottom40">READING COMPREHENSION</h2>
+
+                    <img th:src="@{/img/READING3.jpg}" class="readingImage marginBottom40">
+
+
+                    <h3 class="marginBottom40 marginAuto">Read the text about technology.</h3>
+
+                    <div class="textContainer marginAuto">
+
+                        <p th:text="${apartado.texto}">
+                            texto
+                        </p>
+
+                    </div>
+
+
+                    <div class="questionContainer" th:each="pregunta : ${preguntas}" th:if="${pregunta.tipo == 'MC'}">
+
+                        <p class="question" th:text="${pregunta.enunciado}">ENUNCIADO</p>
+
+                        <fieldset class="answerMC">
+                            <div class="labelContainer">
+                                <label for="RC2q2a1">a.Kevin
+                                    <input type="radio" value="Kevin" name="question1" id="RC2q2a1">
+                                </label>
+
+                                <label for="RC2q2a2">b.Samantha
+                                    <input type="radio" value="Samantha" name="question1" id="RC2q2a2">
+                                </label>
+                            </div>
+
+                            <div class="labelContainer">
+                                <label for="RC2q2a3">c.Both Kevin and Samantha
+                                    <input type="radio" value="Both Kevin and Samantha" name="question1" id="RC2q2a3">
+                                </label>
+
+                                <label for="RC2q2a4">d.Neither Kevin nor Samantha
+                                    <input type="radio" value="Neither Kevin nor Samantha" name="question1" id="RC2q2a4">
+                                </label>
+                            </div>
+
+                        </fieldset>
+
+                    </div>
+
+                    <div class="questionContainer">
+                        <h3 class="question">True or False? Read the following statements and tell if they are true or false. </h3>
+                    </div>
+
+                    <div class="questionContainer"  th:each=" pregunta : ${preguntas}" th:if="${pregunta.tipo == 'TOF'}">
+                        <p class="question" th:text="${pregunta.enunciado}">ENUNCIADO</p>
+
+                        <fieldset class="answerTOF">
+                            <label for="RC2q1a1">TRUE
+                                <input type="radio" value="true" name="question1" id="RC2q1a1">
+                            </label>
+
+                            <label for="RC2q1a2">FALSE
+                                <input type="radio" value="false" name="question1" id="RC2q1a2">
+                            </label>
+
+                        </fieldset>
+                    </div>
+
+
+
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitReading3()">ENVIAR</button> </div>
+
+                </div>
+
+
+
+
+            </div>
             <h2 id="level4" th:if="${prueba == 'level4'}">LEVEL4</h2>
         </div>
     </div>
