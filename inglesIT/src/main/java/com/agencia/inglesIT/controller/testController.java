@@ -2,8 +2,10 @@ package com.agencia.inglesIT.controller;
 
 import com.agencia.inglesIT.entities.Apartado;
 import com.agencia.inglesIT.entities.Pregunta;
+import com.agencia.inglesIT.entities.Respuesta;
 import com.agencia.inglesIT.repository.apartadoRepository;
 import com.agencia.inglesIT.repository.preguntaRepository;
+import com.agencia.inglesIT.repository.respuestaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,9 @@ public class testController {
 
     @Autowired
     apartadoRepository apartadoRepository;
+
+    @Autowired
+    respuestaRepository respuestaRepository;
 
     @GetMapping("/level1")
     String level1(){
@@ -46,13 +51,19 @@ public class testController {
 
         model.addAttribute("preguntas", preguntas);
 
+        List<Respuesta> respuestas = respuestaRepository.findRespuestaByNivel(level);
+
+        model.addAttribute("respuestas" , respuestas);
+
 
 
     return new ModelAndView("testDisplay :: test");
     }
 
     @GetMapping("/init")
-    public void counterInit(){
+    public void projectInit(){
+
+
 
     }
 }

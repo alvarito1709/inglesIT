@@ -27,7 +27,7 @@
     </div>
 
     <div id="testContainer">
-        <div id="test" data-aos="fade-left" data-aos-duration="2000" th:fragment="test (${prueba}, ${preguntas}, ${apartadoUsado})" th:each="apartado : ${apartadoUsado}">
+        <div id="test" data-aos="fade-left" data-aos-duration="2000" th:fragment="test (${prueba}, ${preguntas}, ${apartadoUsado}, ${respuestas})" th:each="apartado : ${apartadoUsado}">
            <h2 id="personalData" th:if="${prueba == 'personalData'}">PERSONAL DATA</h2>
 
             <div id="level1" th:if="${prueba == 'level1'}" >
@@ -51,13 +51,14 @@
                             <input th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion">
 
                         </div>
-                        <div class="answerContainer">
-                            <span id="answer1" draggable="true" class="drag answer">a.Lena</span>
-                            <span id="answer2" draggable="true" class="drag answer">b.Paul</span>
-                            <span id="answer3" draggable="true" class="drag answer">c.Holly</span>
+                        <div class="answerContainer" >
+                            <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}">
+                                <span id="answer1" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
+                            </div>
+
                         </div>
 
-                    <hr>
+                        <hr>
                     </div>
 
 
