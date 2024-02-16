@@ -53,7 +53,7 @@
                         </div>
                         <div class="answerContainer" >
                             <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}">
-                                <span id="answer1" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
+                                <span th:id="${respuesta.id}" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
                             </div>
 
                         </div>
@@ -93,12 +93,8 @@
                         <p class="question" th:text="${pregunta.enunciado}">holis</p>
 
                         <fieldset class="answerTOF">
-                            <label for="RCq1a1">TRUE
-                                <input type="radio" value="true" name="question1" id="RCq1a1">
-                            </label>
-
-                            <label for="RCq1a2">FALSE
-                                <input type="radio" value="false" name="question1" id="RCq1a2">
+                            <label th:each=" respuesta : ${respuestas}" th:for="${respuesta.id}" th:if="${respuesta.pregunta == pregunta}">
+                                <input type="radio" th:value="${respuesta.id}" th:name="${pregunta.id}" th:id="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}">
                             </label>
 
                         </fieldset>
