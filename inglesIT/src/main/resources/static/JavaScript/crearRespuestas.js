@@ -1,5 +1,25 @@
 var urlBase = "http://localhost:8080"
 
+
+
+function formDisplay(){
+    var formulary = document.getElementById("formDisplay").value;
+
+    switch (formulary){
+        case ("AGREGAR"):
+            document.getElementById("agregarRespuesta").style.display= "flex";
+            document.getElementById("edicionRespuesta").style.display= "none";
+
+        break;
+        case ("EDITAR"):
+            document.getElementById("edicionRespuesta").style.display= "flex";
+            document.getElementById("agregarRespuesta").style.display= "none";
+            break;
+    }
+
+}
+
+
 function crearRespuesta(){
     var url = urlBase + "/admin/submitRespuesta"
 
@@ -44,12 +64,31 @@ function crearRespuesta(){
 
 
 function change(){
-    var level = parseInt(document.getElementById("nivel").value);
-    var apartado = document.getElementById("apartado").value;
+    var formulary = document.getElementById("formDisplay").value;
 
-    console.log("ta tomando wey");
+    var level;
+    var apartado;
+    const url = urlBase + "/admin/filtrarPreguntas"
 
-    var url = urlBase + "/admin/filtrarPreguntas"
+    var contenedorid;
+
+    switch (formulary){
+        case("AGREGAR"):
+
+            level = parseInt(document.getElementById("nivel").value);
+            apartado = document.getElementById("apartado").value;
+            contenedorid = "#pregunta";
+
+            break;
+
+        case("EDITAR"):
+
+            level = parseInt(document.getElementById("nivelEdicion").value);
+            apartado = document.getElementById("apartadoEdicion").value;
+            contenedorid = "#preguntaEdicion";
+            break;
+
+    }
 
     $.ajax({
         type: 'POST',
@@ -59,7 +98,7 @@ function change(){
             apartado: apartado,
         },
         success: [function (data){
-            $("#pregunta").html(data);
+            $(contenedorid).html(data);
         }],
         error: [function () {
 

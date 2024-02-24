@@ -11,7 +11,18 @@
 <body>
     <div class="formContainer">
 
-        <form onsubmit="return false;">
+
+        <div class="selectContainer">
+            <select onchange="formDisplay()" id="formDisplay">
+                <option value="" selected> TIPO DE ACCION</option>
+                <option value="AGREGAR">AGREGAR</option>
+                <option value="EDITAR">EDITAR</option>
+                <option value="ELIMINAR">ELIMINAR</option>
+            </select>
+        </div>
+
+
+        <form onsubmit="return false;" id="agregarRespuesta" style="display: none">
             <label for="nivel"> NIVEL</label>
                 <select id="nivel" class="inputField">
                     <option value="1">1</option>
@@ -59,6 +70,57 @@
             <button type="submit" onclick="crearRespuesta()" class="blackButton">ENVIAR</button>
 
         </form>
+
+
+        <form onsubmit="return false;" id="edicionRespuesta" style="display: none">
+            <label for="nivelEdicion"> NIVEL</label>
+            <select id="nivelEdicion" class="inputField">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+
+            <label for="apartadoEdicion"> APARTADO</label>
+            <select id="apartadoEdicion" onchange="change()" class="inputField">
+                <option value="LISTENING">LISTENING</option>
+                <option value="READING">READING COMPREHENSION</option>
+                <option value="ENGLISH">USE OF ENGLISH</option>
+            </select>
+
+
+            <label for="cuerpoEdicion"></label>
+            <input id="cuerpoEdicion" type="text" PLACEHOLDER="Ingrese el cuerpo de la respuesta" class="inputField">
+
+
+            <label for="tipoEdicion"></label>
+            <select id="tipoEdicion" class="inputField">
+                <option value="TOF">TRUE O FALSE</option>
+                <option value="MP">MULTIPLE CHOICE</option>
+                <option value="DD">DRAG AND DROP</option>
+            </select>
+
+
+            <label for="respuestaCorrectaEdicion"></label>
+            <select id="respuestaCorrectaEdicion" class="inputField">
+                <option value="TRUE">RESPUESTA CORRECTA</option>
+                <option value="FALSE">RESPUESTA INCORRECTA</option>
+            </select>
+
+
+            <label for="preguntaEdicion" ></label>
+            <select id="preguntaEdicion"  th:fragment="preg (${preguntas})" class="inputField">
+                <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
+                    Holis
+                </option>
+            </select>
+
+
+            <button type="submit" onclick="editarRespuesta()" class="blackButton">ENVIAR</button>
+
+        </form>
+
     </div>
 
 

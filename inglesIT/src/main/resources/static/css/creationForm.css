@@ -7,6 +7,12 @@ display: flex;
     text-align: center;
 }
 
+.selectContainer{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
 .formContainer form{
     margin: 50px auto;
     width: 500px;
