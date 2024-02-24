@@ -1,10 +1,8 @@
 package com.agencia.inglesIT.controller;
 
 
-import com.agencia.inglesIT.Dao.UserDao;
-import com.agencia.inglesIT.Service.UserService;
 import com.agencia.inglesIT.entities.User;
-import com.agencia.inglesIT.repository.userRepository;
+import com.agencia.inglesIT.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,17 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/board")
 public class boardController {
 
     @Autowired
-    userRepository repository;
+    UserRepository repository;
 
    @GetMapping("")
     public String board(Model model){

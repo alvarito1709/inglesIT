@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface apartadoRepository extends JpaRepository <Apartado, String> {
+public interface ApartadoRepository extends JpaRepository <Apartado, String> {
 
     List<Apartado> findByNivel(Integer nivel);
 

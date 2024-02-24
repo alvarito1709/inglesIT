@@ -2,10 +2,8 @@ package com.agencia.inglesIT.controller;
 
 
 import com.agencia.inglesIT.entities.User;
-import com.agencia.inglesIT.repository.userRepository;
+import com.agencia.inglesIT.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class publicController {
 
     @Autowired
-    userRepository repository;
+    UserRepository repository;
 
     @GetMapping("")
     String index(HttpSession http, Model model){

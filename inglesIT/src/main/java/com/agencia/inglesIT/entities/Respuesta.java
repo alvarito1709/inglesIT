@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Respuesta {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,6 +20,7 @@ public class Respuesta {
     private Boolean respuestaCorrecta;
 
     @ManyToOne
+    @JoinColumn(name = "pregunta_id")
    private Pregunta pregunta;
 
     public Long getId() {
@@ -65,7 +67,9 @@ public class Respuesta {
         return pregunta;
     }
 
-    public void setPregunta(Pregunta pregunta) {
-        this.pregunta = pregunta;
-    }
+    public Long getPreguntaId(){return pregunta.getId();}
+
+    public void setPregunta(Pregunta pregunta) {this.pregunta = pregunta;}
+
+    public void setPreguntaPorId(Long id){ this.pregunta.setId(id);}
 }

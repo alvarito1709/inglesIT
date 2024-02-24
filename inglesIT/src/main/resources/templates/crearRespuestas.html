@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Respuestas</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/css/creationForm.css}">
+</head>
+<body>
+    <div class="formContainer">
+
+        <form onsubmit="return false;">
+            <label for="nivel"> NIVEL</label>
+                <select id="nivel" class="inputField">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+
+
+            <label for="apartado"> APARTADO</label>
+                <select id="apartado" onchange="change()" class="inputField">
+                    <option value="LISTENING">LISTENING</option>
+                    <option value="READING">READING COMPREHENSION</option>
+                    <option value="ENGLISH">USE OF ENGLISH</option>
+                </select>
+
+
+            <label for="cuerpo"></label>
+                <input id="cuerpo" type="text" PLACEHOLDER="Ingrese el cuerpo de la respuesta" class="inputField">
+
+
+            <label for="tipo"></label>
+                <select id="tipo" class="inputField">
+                    <option value="TOF">TRUE O FALSE</option>
+                    <option value="MP">MULTIPLE CHOICE</option>
+                    <option value="DD">DRAG AND DROP</option>
+                </select>
+
+
+            <label for="respuestaCorrecta"></label>
+                <select id="respuestaCorrecta" class="inputField">
+                    <option value="TRUE">RESPUESTA CORRECTA</option>
+                    <option value="FALSE">RESPUESTA INCORRECTA</option>
+                </select>
+
+
+            <label for="pregunta" ></label>
+                <select id="pregunta"  th:fragment="preg (${preguntas})" class="inputField">
+                    <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
+                        Holis
+                    </option>
+                </select>
+
+
+            <button type="submit" onclick="crearRespuesta()" class="blackButton">ENVIAR</button>
+
+        </form>
+    </div>
+
+
+<script th:src="@{/javascript/crearRespuestas.js}"></script>
+
+</body>
+</html>

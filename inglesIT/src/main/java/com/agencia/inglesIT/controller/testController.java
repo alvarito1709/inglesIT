@@ -3,9 +3,9 @@ package com.agencia.inglesIT.controller;
 import com.agencia.inglesIT.entities.Apartado;
 import com.agencia.inglesIT.entities.Pregunta;
 import com.agencia.inglesIT.entities.Respuesta;
-import com.agencia.inglesIT.repository.apartadoRepository;
-import com.agencia.inglesIT.repository.preguntaRepository;
-import com.agencia.inglesIT.repository.respuestaRepository;
+import com.agencia.inglesIT.repository.ApartadoRepository;
+import com.agencia.inglesIT.repository.PreguntaRepository;
+import com.agencia.inglesIT.repository.RespuestaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +22,13 @@ import java.util.List;
 public class testController {
 
     @Autowired
-    preguntaRepository preguntaRepo;
+    PreguntaRepository preguntaRepo;
 
     @Autowired
-    apartadoRepository apartadoRepository;
+    ApartadoRepository apartadoRepository;
 
     @Autowired
-    respuestaRepository respuestaRepository;
+    RespuestaRepository respuestaRepository;
 
     @GetMapping("/level1")
     String level1(){
