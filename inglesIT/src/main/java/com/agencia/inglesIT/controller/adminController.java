@@ -62,22 +62,18 @@ public class adminController {
 
     }
 
-    @GetMapping("/filtrarRespuestas")
-    ModelAndView filtrarRespuestas(@RequestParam(value = "level") Integer level,
-                                  @RequestParam(value = "apartado") String apartado,
+    @PostMapping("/filtrarRespuestas")
+    ModelAndView filtrarRespuestas(@RequestParam(value = "pregunta") Long pregunta,
                                   Model model){
 
         try {
-            Apartado getApartado = apartadoRepo.findByApartadoYNivel(apartado, level);
-
-            List<Pregunta> listaPreguntas = preguntaRepo.findPreguntaByApartadoYNivel(level, getApartado.getId());
-
-            model.addAttribute("preguntas", listaPreguntas);
+           List<Respuesta> respuestas = respuestaService.buscarRespuestasPorPregunta(pregunta);
+           model.addAttribute("respuestas", respuestas);
         } catch (Exception e){
             System.out.print("Error" + e);
         }
 
-        return new ModelAndView("crearRespuestas :: preg");
+        return new ModelAndView("crearRespuestas :: resp");
 
     }
 

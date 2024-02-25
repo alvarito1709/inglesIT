@@ -89,6 +89,20 @@
                 <option value="ENGLISH">USE OF ENGLISH</option>
             </select>
 
+            <label for="preguntaEdicion" ></label>
+            <select id="preguntaEdicion"  th:fragment="preg (${preguntas})" class="inputField" onchange="answerFilter()">
+                <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
+                    Holis
+                </option>
+            </select>
+
+            <label for="respuestaEdicion" ></label>
+            <select id="respuestaEdicion"  th:fragment="resp (${respuestas})" class="inputField">
+                <option th:each="respuesta : ${respuestas}" th:value="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}" >
+                    Holis
+                </option>
+            </select>
+
 
             <label for="cuerpoEdicion"></label>
             <input id="cuerpoEdicion" type="text" PLACEHOLDER="Ingrese el cuerpo de la respuesta" class="inputField">
@@ -106,14 +120,6 @@
             <select id="respuestaCorrectaEdicion" class="inputField">
                 <option value="TRUE">RESPUESTA CORRECTA</option>
                 <option value="FALSE">RESPUESTA INCORRECTA</option>
-            </select>
-
-
-            <label for="preguntaEdicion" ></label>
-            <select id="preguntaEdicion"  th:fragment="preg (${preguntas})" class="inputField">
-                <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
-                    Holis
-                </option>
             </select>
 
 

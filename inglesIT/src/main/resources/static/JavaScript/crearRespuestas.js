@@ -108,6 +108,26 @@ function change(){
 }
 
 
+function answerFilter(){
+    var url = urlBase+'/admin/filtrarRespuestas'
+
+    var pregunta = document.getElementById("preguntaEdicion");
+
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {pregunta: pregunta.value},
+        success: function (data){
+            $('#respuestaEdicion').html(data);
+        },
+        error: function (e){
+
+        }
+    })
+
+}
+
+
 
 
 

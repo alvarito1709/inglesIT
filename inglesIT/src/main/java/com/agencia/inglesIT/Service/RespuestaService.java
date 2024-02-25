@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.agencia.inglesIT.repository.RespuestaRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -18,5 +19,7 @@ public class RespuestaService {
     }
 
     public Respuesta crearRespuesta(Respuesta respuesta){return respuestaRepository.save(respuesta);}
+
+    public List<Respuesta> buscarRespuestasPorPregunta(Long id){return respuestaRepository.findRespuestaByPreguntaId(id);}
 
 }
