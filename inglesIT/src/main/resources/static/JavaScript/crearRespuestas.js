@@ -108,17 +108,30 @@ function change(){
 }
 
 
-function answerFilter(){
-    var url = urlBase+'/admin/filtrarRespuestas'
+function answerFilter(data){
 
-    var pregunta = document.getElementById("preguntaEdicion");
+    switch (data){
+
+        case(preguntaEdicion):
+            var url = urlBase+'/admin/filtrarRespuestas'
+            var dato = document.getElementById("preguntaEdicion");
+            var contenedor = document.getElementById("respuestaEdicion");
+            break;
+
+        case (respuestaEdicion):
+            var url = urlBase+'/admin/buscarRespuesta'
+            var dato = document.getElementById("respuestaEdicion");
+            var contenedor = document.getElementById("edicionRespuesta");
+            break;
+
+    }
 
     $.ajax({
         type: 'POST',
         url: url,
-        data: {pregunta: pregunta.value},
+        data: {dato: dato.value},
         success: function (data){
-            $('#respuestaEdicion').html(data);
+            $(contenedor).html(data);
         },
         error: function (e){
 

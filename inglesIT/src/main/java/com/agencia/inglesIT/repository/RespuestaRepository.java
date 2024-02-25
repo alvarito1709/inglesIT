@@ -16,5 +16,7 @@ public interface RespuestaRepository extends JpaRepository <Respuesta, String> {
             "WHERE r.pregunta.id = " + ":pregunta")
     List<Respuesta> findRespuestaByPreguntaId(Long pregunta);
 
+    Respuesta findRespuestaById(Long id);
+
 
 }

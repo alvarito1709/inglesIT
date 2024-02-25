@@ -63,7 +63,7 @@ public class adminController {
     }
 
     @PostMapping("/filtrarRespuestas")
-    ModelAndView filtrarRespuestas(@RequestParam(value = "pregunta") Long pregunta,
+    ModelAndView filtrarRespuestas(@RequestParam(value = "dato") Long pregunta,
                                   Model model){
 
         try {
@@ -75,6 +75,22 @@ public class adminController {
 
         return new ModelAndView("crearRespuestas :: resp");
 
+    }
+
+    @PostMapping("/buscarRespuesta")
+    ModelAndView buscarRespuesta(@RequestParam(value = "dato") Long respuestaId, Model model) {
+
+        ModelAndView modelAndView = null;
+        try {
+            Respuesta cuerpoRespuesta = respuestaService.buscarRespuestaPorId(respuestaId);
+            modelAndView = new ModelAndView("crearRespuestas:: datosDinamicos");
+            modelAndView.addObject("respuestaEdit", cuerpoRespuesta);
+
+        } catch (Exception e) {
+            System.out.print("Error" + e);
+        }
+
+        return modelAndView;
     }
 
 

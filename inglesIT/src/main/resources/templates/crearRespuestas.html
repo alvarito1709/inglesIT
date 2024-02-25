@@ -72,7 +72,7 @@
         </form>
 
 
-        <form onsubmit="return false;" id="edicionRespuesta" style="display: none">
+        <form onsubmit="return false;" id="edicionRespuesta" style="display: none" >
             <label for="nivelEdicion"> NIVEL</label>
             <select id="nivelEdicion" class="inputField">
                 <option value="1">1</option>
@@ -84,32 +84,45 @@
 
             <label for="apartadoEdicion"> APARTADO</label>
             <select id="apartadoEdicion" onchange="change()" class="inputField">
+                <option>SELECCIONE EL APARTADO ASOCIADO</option>
                 <option value="LISTENING">LISTENING</option>
                 <option value="READING">READING COMPREHENSION</option>
                 <option value="ENGLISH">USE OF ENGLISH</option>
             </select>
 
             <label for="preguntaEdicion" ></label>
-            <select id="preguntaEdicion"  th:fragment="preg (${preguntas})" class="inputField" onchange="answerFilter()">
+            <select id="preguntaEdicion"  th:fragment="preg (${preguntas})" class="inputField" onchange="answerFilter(preguntaEdicion)">
+                <option selected>SELECCIONE LA PREGUNTA ASOCIADA</option>
                 <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
                     Holis
                 </option>
             </select>
 
             <label for="respuestaEdicion" ></label>
-            <select id="respuestaEdicion"  th:fragment="resp (${respuestas})" class="inputField">
+            <select id="respuestaEdicion"  th:fragment="resp (${respuestas})" class="inputField" onchange="answerFilter(respuestaEdicion)">
                 <option th:each="respuesta : ${respuestas}" th:value="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}" >
                     Holis
                 </option>
             </select>
 
+        </form>
+
+        <form id="edicionDatosDinamicos"  th:fragment="datosDinamicos (${respuestaEdit})" th:if="${respuestaEdit != null}">
+
+            <label id="respuestaID">
+            </label>
+            <input type="number" hidden th:if="${respuestaEdit != null}" th:value="${respuestaEdit.id}">
+
+            <input type="number" th:value="${respuestaEdit.nivel}" hidden>
+            <input type="number" th:value="${respuestaEdit.preguntaId}" hidden>
 
             <label for="cuerpoEdicion"></label>
-            <input id="cuerpoEdicion" type="text" PLACEHOLDER="Ingrese el cuerpo de la respuesta" class="inputField">
+            <input id="cuerpoEdicion" type="text"  th:value="${respuestaEdit.cuerpoRespuesta}"  class="inputField">
 
 
             <label for="tipoEdicion"></label>
-            <select id="tipoEdicion" class="inputField">
+            <select id="tipoEdicion" class="inputField" th:value="${respuestaEdit.tipo}">
+                <option>TIPO DE RESPUESTA</option>
                 <option value="TOF">TRUE O FALSE</option>
                 <option value="MP">MULTIPLE CHOICE</option>
                 <option value="DD">DRAG AND DROP</option>
@@ -117,14 +130,13 @@
 
 
             <label for="respuestaCorrectaEdicion"></label>
-            <select id="respuestaCorrectaEdicion" class="inputField">
+            <select id="respuestaCorrectaEdicion" class="inputField" th:value="${respuestaEdit.respuestaCorrecta}">>
+                <option>¿ES CORRECTA?</option>
                 <option value="TRUE">RESPUESTA CORRECTA</option>
                 <option value="FALSE">RESPUESTA INCORRECTA</option>
             </select>
 
-
             <button type="submit" onclick="editarRespuesta()" class="blackButton">ENVIAR</button>
-
         </form>
 
     </div>

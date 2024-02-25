@@ -18,6 +18,8 @@ public class RespuestaService {
         this.respuestaRepository = respuestaRepository;
     }
 
+   public Respuesta buscarRespuestaPorId(Long id){return respuestaRepository.findRespuestaById(id);}
+
     public Respuesta crearRespuesta(Respuesta respuesta){return respuestaRepository.save(respuesta);}
 
     public List<Respuesta> buscarRespuestasPorPregunta(Long id){return respuestaRepository.findRespuestaByPreguntaId(id);}
