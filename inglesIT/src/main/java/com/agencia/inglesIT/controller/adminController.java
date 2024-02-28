@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.swing.text.html.Option;
+import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +48,7 @@ public class adminController {
     @PostMapping("/filtrarPreguntas")
     ModelAndView filtrarPreguntas(@RequestParam(value = "level") Integer level,
                                   @RequestParam(value = "apartado") String apartado,
+                                  @RequestParam(value = "modelo") String modelo,
                                   Model model){
 
        try {
@@ -58,7 +61,7 @@ public class adminController {
            System.out.print("Error" + e);
        }
 
-        return new ModelAndView("crearRespuestas :: preg");
+        return new ModelAndView("crearRespuestas ::"+modelo);
 
     }
 
@@ -108,5 +111,28 @@ public class adminController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{/id}").buildAndExpand(respuestaGuardada.getId()).toUri();
 
         return ResponseEntity.created(uri).body(respuestaGuardada);
+    }
+
+
+    @PutMapping("/editarRespuesta/{id}")
+    @Transactional
+    public ResponseEntity<Respuesta> editAnswer(@PathVariable Long id ,@RequestBody Respuesta respuesta){
+
+        Optional<Pregunta> preguntaOptional = Optional.ofNullable(respuestaService.buscarPreguntaPorRespuestaId(id));
+
+        if (!preguntaOptional.isPresent()){
+            return ResponseEntity.unprocessableEntity().build();
+        }
+
+        Optional<Respuesta> respuestaOptional = Optional.ofNullable(respuestaService.buscarRespuestaPorId(id));
+
+        if (!respuestaOptional.isPresent()){
+            return ResponseEntity.unprocessableEntity().build();
+        }
+
+        respuesta.setPregunta(preguntaOptional.get());
+        respuesta.setId(respuestaOptional.get().getId());
+        respuestaService.editarRespuesta(respuesta);
+        return ResponseEntity.noContent().build();
     }
 }

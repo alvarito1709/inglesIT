@@ -91,7 +91,7 @@
             </select>
 
             <label for="preguntaEdicion" ></label>
-            <select id="preguntaEdicion"  th:fragment="preg (${preguntas})" class="inputField" onchange="answerFilter(preguntaEdicion)">
+            <select id="preguntaEdicion"  th:fragment="pregEdit (${preguntas})" class="inputField" onchange="answerFilter(preguntaEdicion)">
                 <option selected>SELECCIONE LA PREGUNTA ASOCIADA</option>
                 <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
                     Holis
@@ -100,6 +100,7 @@
 
             <label for="respuestaEdicion" ></label>
             <select id="respuestaEdicion"  th:fragment="resp (${respuestas})" class="inputField" onchange="answerFilter(respuestaEdicion)">
+                <option selected>SELECCIONE LA RESPUESTA ASOCIADA</option>
                 <option th:each="respuesta : ${respuestas}" th:value="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}" >
                     Holis
                 </option>
@@ -109,16 +110,20 @@
 
         <form id="edicionDatosDinamicos"  th:fragment="datosDinamicos (${respuestaEdit})" th:if="${respuestaEdit != null}">
 
-            <label id="respuestaID">
-            </label>
-            <input type="number" hidden th:if="${respuestaEdit != null}" th:value="${respuestaEdit.id}">
 
-            <input type="number" th:value="${respuestaEdit.nivel}" hidden>
-            <input type="number" th:value="${respuestaEdit.preguntaId}" hidden>
+            <input type="number" hidden th:value="${respuestaEdit.id}" id="respuestaID">
 
             <label for="cuerpoEdicion"></label>
             <input id="cuerpoEdicion" type="text"  th:value="${respuestaEdit.cuerpoRespuesta}"  class="inputField">
 
+            <input type="number" th:value="${respuestaEdit.nivel}" hidden id="nivelEdit">
+
+            <label for="respuestaCorrectaEdicion"></label>
+            <select id="respuestaCorrectaEdicion" class="inputField" th:value="${respuestaEdit.respuestaCorrecta}">>
+                <option>¿ES CORRECTA?</option>
+                <option value="TRUE">RESPUESTA CORRECTA</option>
+                <option value="FALSE">RESPUESTA INCORRECTA</option>
+            </select>
 
             <label for="tipoEdicion"></label>
             <select id="tipoEdicion" class="inputField" th:value="${respuestaEdit.tipo}">
@@ -128,13 +133,8 @@
                 <option value="DD">DRAG AND DROP</option>
             </select>
 
+            <input type="number" th:value="${respuestaEdit.preguntaId}" hidden id="preguntaIdEdit">
 
-            <label for="respuestaCorrectaEdicion"></label>
-            <select id="respuestaCorrectaEdicion" class="inputField" th:value="${respuestaEdit.respuestaCorrecta}">>
-                <option>¿ES CORRECTA?</option>
-                <option value="TRUE">RESPUESTA CORRECTA</option>
-                <option value="FALSE">RESPUESTA INCORRECTA</option>
-            </select>
 
             <button type="submit" onclick="editarRespuesta()" class="blackButton">ENVIAR</button>
         </form>

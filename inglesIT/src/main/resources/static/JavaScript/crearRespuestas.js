@@ -68,6 +68,7 @@ function change(){
 
     var level;
     var apartado;
+    var modelo
     const url = urlBase + "/admin/filtrarPreguntas"
 
     var contenedorid;
@@ -78,6 +79,7 @@ function change(){
             level = parseInt(document.getElementById("nivel").value);
             apartado = document.getElementById("apartado").value;
             contenedorid = "#pregunta";
+            modelo = "preg";
 
             break;
 
@@ -86,6 +88,7 @@ function change(){
             level = parseInt(document.getElementById("nivelEdicion").value);
             apartado = document.getElementById("apartadoEdicion").value;
             contenedorid = "#preguntaEdicion";
+            modelo = "pregEdit";
             break;
 
     }
@@ -96,6 +99,7 @@ function change(){
         data:{
             level: level,
             apartado: apartado,
+            modelo: modelo
         },
         success: [function (data){
             $(contenedorid).html(data);
@@ -137,6 +141,44 @@ function answerFilter(data){
 
         }
     })
+
+}
+
+function editarRespuesta(){
+
+    var id = document.getElementById("respuestaID");
+    var cuerpoRespuesta = document.getElementById("cuerpoEdicion");
+    var nivel = document.getElementById("nivelEdit");
+    var respuestaCorrecta = document.getElementById("respuestaCorrectaEdicion");
+    var tipo = document.getElementById("tipoEdicion");
+    var preguntaId = document.getElementById("preguntaIdEdit");
+
+    var url = urlBase + "/admin/editarRespuesta/" + id.value;
+
+    var data = {
+        id: id.value,
+        cuerpoRespuesta: cuerpoRespuesta.value,
+        nivel: nivel.value,
+        respuestaCorrecta: respuestaCorrecta.value,
+        tipo: tipo.value,
+        preguntaId: {id:preguntaId.value}
+    }
+
+    var dataJson = JSON.stringify(data);
+
+    console.log(dataJson);
+
+    var request = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: dataJson
+    };
+
+    fetch(url, request)
+        .then(response => response.json())
+        .then(result => console.log("RESPUESTA DEL SERVIDOR " + result));
 
 }
 
