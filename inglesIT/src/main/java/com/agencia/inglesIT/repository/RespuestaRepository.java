@@ -18,5 +18,7 @@ public interface RespuestaRepository extends JpaRepository <Respuesta, String> {
 
     Respuesta findRespuestaById(Long id);
 
+    void deleteById(Long id);
+
 
 }

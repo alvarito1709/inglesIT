@@ -35,6 +35,10 @@ public class RespuestaService {
        return respuestaRepository.save(respuesta);
     }
 
+    public void borrarRespuesta(Long id){
+        respuestaRepository.deleteById(id);
+    }
+
     public Pregunta buscarPreguntaPorRespuestaId(Long id){
         Pregunta pregunta = buscarRespuestaPorId(id).getPregunta();
         return pregunta;

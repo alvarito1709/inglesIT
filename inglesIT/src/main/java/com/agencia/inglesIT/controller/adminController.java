@@ -67,6 +67,7 @@ public class adminController {
 
     @PostMapping("/filtrarRespuestas")
     ModelAndView filtrarRespuestas(@RequestParam(value = "dato") Long pregunta,
+                                  @RequestParam(value = "modelo") String modelo,
                                   Model model){
 
         try {
@@ -76,7 +77,7 @@ public class adminController {
             System.out.print("Error" + e);
         }
 
-        return new ModelAndView("crearRespuestas :: resp");
+        return new ModelAndView("crearRespuestas ::"+modelo);
 
     }
 
@@ -134,5 +135,19 @@ public class adminController {
         respuesta.setId(respuestaOptional.get().getId());
         respuestaService.editarRespuesta(respuesta);
         return ResponseEntity.noContent().build();
+    }
+
+
+    @DeleteMapping("/borrarRespuesta/{id}")
+    @Transactional
+    public ResponseEntity borrarRespuesta(@PathVariable Long id){
+
+        try{
+            respuestaService.borrarRespuesta(id);
+            return ResponseEntity.noContent().build();
+        }catch (Exception e ){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("ERROR AL ELIMINAR LA RESPUESTA");
+        }
+
     }
 }

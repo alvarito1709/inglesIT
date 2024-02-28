@@ -1,7 +1,7 @@
 var urlBase = "http://localhost:8080"
 
 
-
+//MUESTRA QUE FORMULARIO VER
 function formDisplay(){
     var formulary = document.getElementById("formDisplay").value;
 
@@ -9,11 +9,19 @@ function formDisplay(){
         case ("AGREGAR"):
             document.getElementById("agregarRespuesta").style.display= "flex";
             document.getElementById("edicionRespuesta").style.display= "none";
+            document.getElementById("eliminarRespuesta").style.display= "none";
 
         break;
         case ("EDITAR"):
             document.getElementById("edicionRespuesta").style.display= "flex";
             document.getElementById("agregarRespuesta").style.display= "none";
+            document.getElementById("eliminarRespuesta").style.display= "none";
+            break;
+
+        case ("ELIMINAR"):
+            document.getElementById("edicionRespuesta").style.display= "none";
+            document.getElementById("agregarRespuesta").style.display= "none";
+            document.getElementById("eliminarRespuesta").style.display= "flex";
             break;
     }
 
@@ -63,6 +71,8 @@ function crearRespuesta(){
 
 
 
+//FILTRA PREGUNTAS SEGUN EL NIVEL Y APARTADO SELECCIONADO Y LOS REPRESENTA EN EL HTML SEGUN EL FORMULARIO SELECCIONADO (AGREGAR, EDITAR O ELIMINAR)
+
 function change(){
     var formulary = document.getElementById("formDisplay").value;
 
@@ -91,6 +101,14 @@ function change(){
             modelo = "pregEdit";
             break;
 
+        case("ELIMINAR"):
+
+            level = parseInt(document.getElementById("nivelBorrar").value);
+            apartado = document.getElementById("apartadoBorrar").value;
+            contenedorid = "#preguntaBorrar";
+            modelo = "pregDelete";
+            break;
+
     }
 
     $.ajax({
@@ -111,21 +129,34 @@ function change(){
 
 }
 
-
+//FILTRA LAS RESPUESTAS SEGUN LA PREGUNTA SELECCIONADA Y AL SELECCIONAR LA RESPUESTA TRAE LOS DATOS PARA SER EDITADA.
 function answerFilter(data){
 
     switch (data){
 
+
+        //TRAE UNA LISTA DE RESPUESTAS
         case(preguntaEdicion):
             var url = urlBase+'/admin/filtrarRespuestas'
             var dato = document.getElementById("preguntaEdicion");
             var contenedor = document.getElementById("respuestaEdicion");
+            var modelo = "resp";
             break;
 
+            //TRAE SOLO UNA RESPUESTA CON TODOS SUS DATOS
         case (respuestaEdicion):
             var url = urlBase+'/admin/buscarRespuesta'
             var dato = document.getElementById("respuestaEdicion");
             var contenedor = document.getElementById("edicionRespuesta");
+            break;
+
+
+            //FILTRA LAS RESPUESTAS PARA PODER ELIMINARLA
+        case(preguntaBorrar):
+            var url = urlBase+'/admin/filtrarRespuestas'
+            var dato = document.getElementById("preguntaBorrar");
+            var contenedor = document.getElementById("respuestaBorrar");
+            var modelo = "respEliminar";
             break;
 
     }
@@ -133,7 +164,10 @@ function answerFilter(data){
     $.ajax({
         type: 'POST',
         url: url,
-        data: {dato: dato.value},
+        data: {
+            dato: dato.value,
+            modelo: modelo
+        },
         success: function (data){
             $(contenedor).html(data);
         },
@@ -181,6 +215,26 @@ function editarRespuesta(){
         .then(result => console.log("RESPUESTA DEL SERVIDOR " + result));
 
 }
+
+function eliminarRespuesta(){
+
+    var respuestaId = document.getElementById("respuestaBorrar").value;
+    var url = urlBase + "/admin/borrarRespuesta/" + respuestaId;
+
+    var request = {
+        method: 'DELETE',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:respuestaId
+    };
+
+    fetch(url, request)
+        .then(result => console.log(result))
+
+}
+
+
 
 
 

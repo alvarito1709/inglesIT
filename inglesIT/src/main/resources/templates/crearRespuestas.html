@@ -90,7 +90,7 @@
                 <option value="ENGLISH">USE OF ENGLISH</option>
             </select>
 
-            <label for="preguntaEdicion" ></label>
+            <label for="preguntaEdicion">PREGUNTA</label>
             <select id="preguntaEdicion"  th:fragment="pregEdit (${preguntas})" class="inputField" onchange="answerFilter(preguntaEdicion)">
                 <option selected>SELECCIONE LA PREGUNTA ASOCIADA</option>
                 <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
@@ -98,7 +98,7 @@
                 </option>
             </select>
 
-            <label for="respuestaEdicion" ></label>
+            <label for="respuestaEdicion" >RESPUESTA</label>
             <select id="respuestaEdicion"  th:fragment="resp (${respuestas})" class="inputField" onchange="answerFilter(respuestaEdicion)">
                 <option selected>SELECCIONE LA RESPUESTA ASOCIADA</option>
                 <option th:each="respuesta : ${respuestas}" th:value="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}" >
@@ -125,7 +125,7 @@
                 <option value="FALSE">RESPUESTA INCORRECTA</option>
             </select>
 
-            <label for="tipoEdicion"></label>
+            <label for="tipoEdicion">TIPO DE RESPUESTA</label>
             <select id="tipoEdicion" class="inputField" th:value="${respuestaEdit.tipo}">
                 <option>TIPO DE RESPUESTA</option>
                 <option value="TOF">TRUE O FALSE</option>
@@ -137,6 +137,45 @@
 
 
             <button type="submit" onclick="editarRespuesta()" class="blackButton">ENVIAR</button>
+        </form>
+
+
+        <form onsubmit="return false;" id="eliminarRespuesta" style="display: none" >
+            <label for="nivelBorrar"> NIVEL</label>
+            <select id="nivelBorrar" class="inputField">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+
+            <label for="apartadoBorrar"> APARTADO</label>
+            <select id="apartadoBorrar" onchange="change()" class="inputField">
+                <option>SELECCIONE EL APARTADO ASOCIADO</option>
+                <option value="LISTENING">LISTENING</option>
+                <option value="READING">READING COMPREHENSION</option>
+                <option value="ENGLISH">USE OF ENGLISH</option>
+            </select>
+
+            <label for="preguntaBorrar" >PREGUNTA</label>
+            <select id="preguntaBorrar"  th:fragment="pregDelete (${preguntas})" class="inputField" onchange="answerFilter(preguntaBorrar)">
+                <option selected>SELECCIONE LA PREGUNTA ASOCIADA</option>
+                <option th:each="pregunta : ${preguntas}" th:value="${pregunta.id}" th:text="${pregunta.enunciado}" >
+                    Holis
+                </option>
+            </select>
+
+            <label for="respuestaBorrar" > RESPUESTA</label>
+            <select id="respuestaBorrar"  th:fragment="respEliminar (${respuestas})" class="inputField">
+                <option selected>SELECCIONE LA RESPUESTA ASOCIADA</option>
+                <option th:each="respuesta : ${respuestas}" th:value="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}" >
+                    Holis
+                </option>
+            </select>
+
+            <button type="submit" onclick="eliminarRespuesta()" class="blackButton">ENVIAR</button>
+
         </form>
 
     </div>
