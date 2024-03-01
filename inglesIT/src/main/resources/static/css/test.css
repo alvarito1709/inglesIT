@@ -144,3 +144,15 @@
     padding: 5px;
 }
 
+/* ESTILOS SOLO PARA EL APARTADO DE LISTENING NIVEL 2 */
+
+#listening2 .drag{
+    width: 100px;
+    display: flex;
+    font-size: medium;
+}
+
+#listening2 .answerContainer{
+    align-items: center;
+}
+

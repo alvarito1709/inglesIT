@@ -1,118 +1,62 @@
 var urlBase = "http://localhost:8080"
 
 
-function submitListening1(){
-    var listening = document.getElementById("listening1")
-    var englishUse = document.getElementById("englishUse1")
-
-    var url = urlBase+'/test/level'
-    const test = "level1";
-
-    const apartado = "READING";
-
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data:{
-            prueba: test,
-            level: 1,
-            apartado: apartado
-        },
-        success: [function (data){
-            $("#tester").html(data);
-        },
-            function (){
+function submitApartado(data){
+    var url = urlBase+'/test/level';
+    var test;
+    var apartado;
+    var level;
 
 
-            }],
-        error: [function () {
+    switch (data){
+        case "listening1":
+            test = "level1";
+            apartado = "READING";
+            level = 1;
+            break;
 
-        }]
-    })
+        case "reading1":
+            test = "level1";
+            apartado = "ENGLISH";
+            level= 1;
+            break;
 
-    window.scrollTo({top: 0, behavior: 'smooth'});
+        case "useOfEnglish1":
 
+            break;
 
-}
+        case "listening2":
 
-function submitReading1(){
-    var url = urlBase+'/test/level'
-    const test = "level1";
+            test = "level2";
+            apartado = "READING";
+            level= 2;
+            break;
 
-    const apartado = "ENGLISH";
+        case "reading2":
+           test = "level2";
+           apartado = "ENGLISH";
+            level= 2;
+            break;
 
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data:{
-            prueba: test,
-            level: 1,
-            apartado: apartado
-        },
-        success: [function (data){
-            $("#tester").html(data);
-        },
-            function (){
+        case "listening3":
+            test = "level3";
+            apartado = "READING";
+            level= 3;
+            break;
 
-
-            }],
-        error: [function () {
-
-        }]
-    })
-
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-function submitEnglish1(){
-    console.log("Caiste wey");
-
-    window.scrollTo(0, 0);
-}
-
-function submitListening2(){
-
-    var url = urlBase+'/test/level'
-    const test = "level2";
-
-    const apartado = "READING";
+        case "englishUse3":
+            test = "level3";
+            apartado = "ENGLISH";
+            level= 3;
+            break;
+    }
 
     $.ajax({
         type: 'POST',
         url: url,
         data:{
             prueba: test,
-            level: 2,
-            apartado: apartado
-        },
-        success: [function (data){
-            $("#tester").html(data);
-        },
-            function (){
-
-
-            }],
-        error: [function () {
-
-        }]
-    })
-
-    window.scrollTo({top: 0, behavior: 'smooth'});
-
-}
-
-function submitReading2(){
-    var url = urlBase+'/test/level'
-    const test = "level2";
-
-    const apartado = "ENGLISH";
-
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data:{
-            prueba: test,
-            level: 2,
+            level: level,
             apartado: apartado
         },
         success: [function (data){
@@ -130,33 +74,3 @@ function submitReading2(){
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function submitListening3(){
-
-    var url = urlBase+'/test/level'
-    const test = "level3";
-
-    const apartado = "READING";
-
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data:{
-            prueba: test,
-            level: 3,
-            apartado: apartado
-        },
-        success: [function (data){
-            $("#tester").html(data);
-        },
-            function (){
-
-
-            }],
-        error: [function () {
-
-        }]
-    })
-
-    window.scrollTo({top: 0, behavior: 'smooth'});
-
-}

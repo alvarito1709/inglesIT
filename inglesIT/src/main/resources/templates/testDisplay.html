@@ -62,13 +62,13 @@
                     </div>
 
 
-                   <div class="buttonContainer"> <button class="submitButton" onclick="submitListening1()">ENVIAR</button> </div>
+                   <div class="buttonContainer"> <button class="submitButton" onclick="submitApartado('listening1')">ENVIAR</button> </div>
 
                 </div>
 
                 <!-- READING COMPREHENSION NIVEL1 -->
 
-                <div id="englishUse1" class="englishUseContainer" th:if="${apartado.nombreApartado == 'READING'}">
+                <div id="reading1" class="englishUseContainer" th:if="${apartado.nombreApartado == 'READING'}">
 
                     <h2 class="marginBottom40">READING COMPREHENSION</h2>
 
@@ -102,7 +102,7 @@
 
 
 
-                    <div class="buttonContainer"> <button class="submitButton" onclick="submitReading1()">ENVIAR</button> </div>
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitApartado('reading1')">ENVIAR</button> </div>
 
                 </div>
 
@@ -135,7 +135,7 @@
 
 
 
-                    <div class="buttonContainer"> <button class="submitButton" onclick="submitEnglish1()">ENVIAR</button> </div>
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitApartado('useOfEnglish1')">ENVIAR</button> </div>
 
                 </div>
 
@@ -170,14 +170,14 @@
                     </div>
 
 
-                    <div class="buttonContainer"> <button class="submitButton" onclick="submitListening2()">ENVIAR</button> </div>
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitApartado('listening2')">ENVIAR</button> </div>
 
                 </div>
 
 
                 <!-- READING COMPREHENSION NIVEL2 -->
 
-                <div id="englishUse2" class="englishUseContainer" th:if="${apartado.nombreApartado == 'READING'}">
+                <div id="reading2" class="englishUseContainer" th:if="${apartado.nombreApartado == 'READING'}">
 
                     <h2 class="marginBottom40">READING COMPREHENSION</h2>
 
@@ -244,12 +244,13 @@
 
 
 
-                    <div class="buttonContainer"> <button class="submitButton" onclick="submitReading2()">ENVIAR</button> </div>
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitApartado('reading2')">ENVIAR</button> </div>
 
                 </div>
 
 
             </div>
+
             <div id="level3" th:if="${prueba == 'level3'}">
 
                 <!-- LISTENING NIVEL 3 -->
@@ -291,7 +292,7 @@
                         </div>
 
 
-                    <div class="buttonContainer"> <button class="submitButton" onclick="submitListening3()">ENVIAR</button> </div>
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitApartado('listening3')">ENVIAR</button> </div>
 
                 </div>
 
@@ -366,7 +367,7 @@
 
 
 
-                    <div class="buttonContainer"> <button class="submitButton" onclick="submitReading3()">ENVIAR</button> </div>
+                    <div class="buttonContainer"> <button class="submitButton" onclick="submitApartado('englishUse3')">ENVIAR</button> </div>
 
                 </div>
 
@@ -374,6 +375,7 @@
 
 
             </div>
+
             <h2 id="level4" th:if="${prueba == 'level4'}">LEVEL4</h2>
         </div>
     </div>

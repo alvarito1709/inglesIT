@@ -231,7 +231,6 @@ function eliminarRespuesta(){
 
     fetch(url, request)
         .then(result => console.log(result))
-
 }
 
 
