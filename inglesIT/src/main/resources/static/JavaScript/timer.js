@@ -54,10 +54,6 @@ function setUpTimer(mSecond){
             }
         }
 
-
-
-
-        console.log(minute + ":" + second);
     }
 
 }

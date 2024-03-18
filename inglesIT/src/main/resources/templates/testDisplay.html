@@ -48,12 +48,12 @@
 
 
 
-                            <input th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion">
+                            <div th:dropzone="prueba1" id="dropQuestion12" class="dropQuestion" ></div>
 
                         </div>
                         <div class="answerContainer" >
-                            <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}">
-                                <span th:id="${respuesta.id}" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
+                            <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}" id="listeningAnswerContainer" class="listeningAnswerContainer">
+                                <span th:id="${respuesta.id}" id="dragAnswer" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
                             </div>
 
                         </div>
@@ -202,14 +202,9 @@
                         <p class="question" th:text="${pregunta.enunciado}">ENUNCIADO</p>
 
                         <fieldset class="answerTOF">
-                            <label for="RC2q1a1">TRUE
-                                <input type="radio" value="true" name="question1" id="RC2q1a1">
+                            <label th:each=" respuesta : ${respuestas}" th:for="${respuesta.id}" th:if="${respuesta.pregunta == pregunta}">
+                                <input type="radio" th:value="${respuesta.id}" th:name="${pregunta.id}" th:id="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}">
                             </label>
-
-                            <label for="RC2q1a2">FALSE
-                                <input type="radio" value="false" name="question1" id="RC2q1a2">
-                            </label>
-
                         </fieldset>
                     </div>
 

@@ -129,16 +129,20 @@
 
 <div id="container" style="display: none">
 
+    <!-- CRONOMETRO -->
+
     <div id="timerContainer" th:fragment="timer">
         <div id="timer">
             <h1 id="counterDisplay"><span id="minute"></span>:<span id="second"></span></h1>
         </div>
     </div>
 
+    <!-- CONTENEDOR PARA MOSTRAR EL TEST -->
+
     <div id="testContainer">
 
            <div id="tester">
-                <!--<h1>FUNCIONA</h1>-->
+
            </div>
     </div>
 
@@ -157,6 +161,8 @@
 <script th:src="@{/javascript/timer.js}"></script>
 
 <script>
+    // WORKER PARA MANTENER EL CRONOMETRO FUNCIONANDO EN SEGUNDO PLANO
+
     const worker = new Worker('../javascript/timer.js');
 
 
@@ -171,6 +177,8 @@
             }
         };
 
+
+    // FUNCION PARA INICIAR EL TIMER, ENVÍA COMO PARAMETRO 1000 MILISEGUNDOS
         function initializateTimer(){
             worker.postMessage(1000);
         }
@@ -181,6 +189,8 @@
 </script>
 
 <script>
+
+    //API PARA TRANSICIONES
     AOS.init();
 </script>
 
