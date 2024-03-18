@@ -78,70 +78,79 @@ function submitApartado(data){
 
 
 //ESPERA A QUE EL ID CON VALOR TESTER SE ACTUALICE PARA CREAR EL DRAG AND DROP
-var tester = document.getElementById("tester");
+const tester = document.getElementById("tester");
 
-tester.addEventListener('DOMSubtreeModified', () =>{
+    // Utiliza MutationObserver para detectar cambios en el elemento tester de manera más eficiente
+    const observer = new MutationObserver(() => {
+        attachEventListeners();
+    });
 
-        let questionContainer = document.getElementsByClassName('dropQuestion');
+    observer.observe(tester, { childList: true });
 
-        let answer = document.getElementsByClassName('listeningAnswerContainer');
+function attachEventListeners(){
+    const questionContainer = document.querySelectorAll('.dropQuestion');
 
-
-        //mapea el HTML collection de questionContainer para agregarles un addEventListener a todos
-        for (let i = 0; i < questionContainer.length; i++) {
-
-            // agrega el evento dragover segun el elemento que se está arrastrando iterandolo con [i]
-
-            questionContainer[i].addEventListener('dragover',ev => {
-                ev.preventDefault();
-                questionContainer[i].classList.add('dropHover');
-            })
-
-            // agrega el evento dragleave segun el elemento que se está arrastrando iterandolo con [i]
-            questionContainer[i].addEventListener('dragleave',ev => {
-                // remueve la clase dropHover del elemento
-                questionContainer[i].classList.remove('dropHover');
-            })
-
-            questionContainer[i].addEventListener('drop',ev => {
-
-                // remueve la clase dropHover del elemento
-                questionContainer[i].classList.remove('dropHover');
-
-                //recibe la variable del elemento arrastrado mediante un dataTransfer
-                var id = ev.dataTransfer.getData('id');
-
-                console.log(id);
-            })
-        }
+    const answer = document.querySelectorAll('.listeningAnswerContainer');
 
 
-        //mapea el HTML collection de answer para agregarles un addEventListener a todos
-        for (let i = 0; i < answer.length; i++) {
-            answer[i].addEventListener("dragstart", ev => {
-                //toma el span children del contenedor y lo almacena en una variable html collection
-                var children = answer[i].children;
+    //mapea el HTML collection de questionContainer para agregarles un addEventListener a todos
+    for (let i = 0; i < questionContainer.length; i++) {
 
-                console.log(children);
+        // agrega el evento dragover segun el elemento que se está arrastrando iterandolo con [i]
 
-                //crea una variable de tipo array para almacenar el id
-                var childrenId = [];
+        questionContainer[i].addEventListener('dragover', ev => {
+            ev.preventDefault();
+            questionContainer[i].classList.add('dropHover');
+        })
 
-                //almacena el id en la variable childrenId
-                for (let i = 0; i < children.length; i++) {
-                    childrenId.push(children[i].id);
-                }
+        // agrega el evento dragleave segun el elemento que se está arrastrando iterandolo con [i]
+        questionContainer[i].addEventListener('dragleave', ev => {
+            // remueve la clase dropHover del elemento
+            questionContainer[i].classList.remove('dropHover');
+        })
 
-                //mapea la variable childrenId y deja el dato Id del elemento hijo
-                var id = childrenId.map(e => parseInt(e)).join("")
+        questionContainer[i].addEventListener('drop', ev => {
 
-                // agrega el id del elemento arrastrado a un dataTransfer para ser recibido por el contenedor destino.
-                ev.dataTransfer.setData('id', id);
-            });
-        }
+            // remueve la clase dropHover del elemento
+            questionContainer[i].classList.remove('dropHover');
+
+            //recibe la variable del elemento arrastrado mediante un dataTransfer
+            var id = ev.dataTransfer.getData('id');
+
+            if (id != null) {
+                ev.target.appendChild(document.getElementById(id));
+            }
+
+            console.log(id);
+        })
+    }
 
 
-    })
+    //mapea el HTML collection de answer para agregarles un addEventListener a todos
+    for (let i = 0; i < answer.length; i++) {
+        answer[i].addEventListener("dragstart", ev => {
+            //toma el span children del contenedor y lo almacena en una variable html collection
+            var children = answer[i].children;
+
+
+            //crea una variable de tipo array para almacenar el id
+            var childrenId = [];
+
+            //almacena el id en la variable childrenId
+            for (let i = 0; i < children.length; i++) {
+                childrenId.push(children[i].id);
+            }
+
+            //mapea la variable childrenId y deja el dato Id del elemento hijo
+            var id = childrenId.map(e => parseInt(e)).join("")
+
+            // agrega el id del elemento arrastrado a un dataTransfer para ser recibido por el contenedor destino.
+            ev.dataTransfer.setData('id', id);
+        });
+    }
+}
+
+
 
 
 
