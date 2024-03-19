@@ -117,11 +117,11 @@ function attachEventListeners(){
             //recibe la variable del elemento arrastrado mediante un dataTransfer
             var id = ev.dataTransfer.getData('id');
 
+            console.log(id);
+
             if (id != null) {
                 ev.target.appendChild(document.getElementById(id));
             }
-
-            console.log(id);
         })
     }
 
@@ -141,7 +141,7 @@ function attachEventListeners(){
                 childrenId.push(children[i].id);
             }
 
-            //mapea la variable childrenId y deja el dato Id del elemento hijo
+            //mapea la variable childrenId y deja el dato Id del elemento hijo como un string
             var id = childrenId.map(e => parseInt(e)).join("")
 
             // agrega el id del elemento arrastrado a un dataTransfer para ser recibido por el contenedor destino.

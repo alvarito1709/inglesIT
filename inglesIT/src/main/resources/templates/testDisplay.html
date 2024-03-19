@@ -48,7 +48,7 @@
 
 
 
-                            <div th:dropzone="prueba1" id="dropQuestion12" class="dropQuestion" ></div>
+                            <div th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion" ></div>
 
                         </div>
                         <div class="answerContainer" >
@@ -157,12 +157,12 @@
 
 
 
-                            <input th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion">
+                            <div th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion"></div>
 
                         </div>
                         <div class="answerContainer" >
-                            <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}">
-                                <span th:id="${respuesta.id}" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
+                            <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}" class="listeningAnswerContainer">
+                                <span th:id="${respuesta.id}" id="dragAnswer" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
                             </div>
                         </div>
 
