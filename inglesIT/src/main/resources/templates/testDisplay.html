@@ -90,14 +90,32 @@
                     </div>
 
                     <div class="questionContainer" th:each=" pregunta : ${preguntas}">
-                        <p class="question" th:text="${pregunta.enunciado}">holis</p>
 
-                        <fieldset class="answerTOF">
-                            <label th:each=" respuesta : ${respuestas}" th:for="${respuesta.id}" th:if="${respuesta.pregunta == pregunta}">
-                                <input type="radio" th:value="${respuesta.id}" th:name="${pregunta.id}" th:id="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}">
-                            </label>
+                       <div th:if="${pregunta.tipo == 'TOF'}" style="display: flex; flex-direction: column">
+                            <p class="question" th:text="${pregunta.enunciado}">holis</p>
 
-                        </fieldset>
+                            <fieldset class="answerTOF">
+                                <label th:each=" respuesta : ${respuestas}" th:for="${respuesta.id}" th:if="${respuesta.pregunta == pregunta}">
+                                    <input type="radio" th:value="${respuesta.id}" th:name="${pregunta.id}" th:id="${respuesta.id}" th:text="${respuesta.cuerpoRespuesta}">
+                                </label>
+
+                            </fieldset>
+
+                       </div>
+                    </div>
+
+                    <div th:fragment="respuestasReading1(${respuestas}, ${preguntas}, ${apartadoUsado})" style="display: flex; flex-direction: column">
+
+                        <div class="dragAndDropAnswerContainer">
+                            <span draggable="true">patch</span>
+                            <span draggable="true">glasses</span>
+                            <span draggable="true">smartwatch</span>
+                        </div>
+
+                        <div th:each=" pregunta : ${preguntas}" th:if="${pregunta.tipo == 'DD' && pregunta.apartado == apartadoUsado}" class="questionsReading1DD">
+                            <p th:text="${pregunta.enunciado}">1- Adam doesn't want to use headphones for music. He needs a smart _____ .</p>
+                        </div>
+
                     </div>
 
 
@@ -149,24 +167,29 @@
 
                     </iframe>
 
+
                     <div th:each=" pregunta : ${preguntas}">
 
-                        <div class="questionContainer" >
+                        <div th:if="${pregunta.tipo == 'DD'}">
 
-                            <p class="question" th:text="${pregunta.enunciado}">1- Who walks to work?</p>
+                            <div class="questionContainer" >
+
+                                <p class="question" th:text="${pregunta.enunciado}">1- Who walks to work?</p>
 
 
 
-                            <div th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion"></div>
+                                <div th:dropzone="prueba1" id="dropQuestion1" class="dropQuestion"></div>
 
-                        </div>
-                        <div class="answerContainer" >
-                            <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}" class="listeningAnswerContainer">
-                                <span th:id="${respuesta.id}" id="dragAnswer" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
                             </div>
+                            <div class="answerContainer" >
+                                <div th:each=" respuesta : ${respuestas}" th:if="${respuesta.pregunta == pregunta}" class="listeningAnswerContainer">
+                                    <span th:id="${respuesta.id}" id="dragAnswer" draggable="true" class="drag answer" th:text="${respuesta.cuerpoRespuesta}">a.Lena</span>
+                                </div>
+                            </div>
+
+                            <hr>
                         </div>
 
-                        <hr>
                     </div>
 
 

@@ -124,6 +124,7 @@
 .textContainer{
     width: 600px;
     text-align: justify;
+    align-self: center;
 }
 
 .marginAuto{
@@ -151,7 +152,32 @@
 
 }
 
+.dragAndDropAnswerContainer{
+    width: 80%;
+    height: 50px;
+    background-color: #8C8383;
+    padding: 5px;
+    border-radius: 5px;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+}
 
+.dragAndDropAnswerContainer span{
+    padding: 1px;
+    border-radius: 3px;
+    color: whitesmoke;
+    height: fit-content;
+    cursor: pointer;
+}
+
+.questionsReading1DD{
+    margin-bottom: 20px;
+    font-weight: 500;
+}
 
 /* ESTILOS SOLO PARA EL APARTADO DE LISTENING NIVEL 2 */
 

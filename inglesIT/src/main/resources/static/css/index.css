@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(217, 217, 217, 0.73);
+    background-color: #ffffff   ;
 }
 
 #bannerContainer{
@@ -23,7 +23,7 @@ body{
 #bannerContainer img{
 
     width: 70%;
-    height: fit-content;
+    height: calc(100vh - 75px);
 }
 
 .blackLine{
@@ -83,6 +83,7 @@ body{
 
 #logSection p{
     font-weight: 500;
+    padding: 5px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
